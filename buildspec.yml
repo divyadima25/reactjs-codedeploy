@@ -4,10 +4,10 @@ phases:
   install:
     commands:
       - echo Installing Node 12...
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-      - . ~/.nvm/nvm.sh
-      - nvm install node
-      - npm install yarn -g
+      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+      - apt install -y nodejs
+      - echo Installing Yarn...
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
       - apt install --no-install-recommends yarn
   pre_build:
