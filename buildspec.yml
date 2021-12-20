@@ -21,6 +21,5 @@ phases:
       - yarn build
 artifacts:
   files:
-    - "react_build"
+    - "**/*"
   discard-paths: no
-  base-directory: dist
