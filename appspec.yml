@@ -3,11 +3,12 @@ os: linux
 files:
    - source: /
      destination: /var/www/html
+file_exists_behavior: OVERWRITE     
 permissions:
    - object: /var/www/html
      pattern: "**"
-     owner: apache
-     group: apache
+     owner: root
+     group: root
      mode: 755
      type:
        - file
