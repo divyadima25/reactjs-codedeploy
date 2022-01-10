@@ -3,7 +3,7 @@
      stages {
         stage("Build") {
             steps {
-                sh "sudo npm install"
+                sh "sudo npm install -y"
                 sh "sudo npm run build"
             }
         }
