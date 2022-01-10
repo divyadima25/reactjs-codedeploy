@@ -7,6 +7,7 @@ pipeline {
         
     stage("Build") {
       steps {
+        git branch: 'main', credentialsId: 'github_token', url: 'https://github.com/divyadima25/reactjs-codedeploy.git'
         sh "npm install"
         sh "cd src"
         sh "yarn build"
