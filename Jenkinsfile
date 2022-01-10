@@ -5,16 +5,17 @@ pipeline {
     
   stages {
         
-    stage('Install dependencies') {
+    stage("Build") {
       steps {
-        sh 'npm install'
-      }
+        sh "sudo npm install"
+        sh "sudo npm run build"
+            }
+        }
+    stage("Deploy") {
+      steps {
+        sh "sudo rm -rf /var/www/react-test"
+        sh "sudo cp -r ${WORKSPACE}/build/ /var/www/react-test/"
+            }
+        }
     }
-     
-    stage('Test') {
-      steps {
-         sh 'npm test'
-      }
-    }      
-  }
 }
