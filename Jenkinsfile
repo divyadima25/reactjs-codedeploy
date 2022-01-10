@@ -1,17 +1,19 @@
 pipeline {
-     agent any
-     stages {
-        stage("Build") {
-            steps {
-                sh "sudo npm install"
-                sh "sudo npm run build"
-	    }
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
         }
-        stage("Deploy") {
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
             steps {
-                sh "sudo rm -rf /var/www/test-react/"
-                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/test-react/"
+                sh 'npm install'
             }
         }
+        
     }
 }
